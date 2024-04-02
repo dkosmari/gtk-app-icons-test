@@ -34,27 +34,27 @@ How to make recoloring work
     - `scalable/status/`
 
   - The `.gresource` file must be loaded and registered:
-  
+
 ```python
     resource = Gio.Resource.load(base_path + "/icons.gresource")
     Gio.resources_register(resource)
 ```
-    
+
   - When using `GtkApplication`, the application ID is used to derive a default search
     path, `APP_ID/icons`. For instance, if the application ID is `org.gtk.app_icons_test`,
     this resource path would work:
-    
+
     - `/org/gtk/app_icons_test/icons/scalable/emotes/foo-symbolic.svg`
 
     When using different paths, you need to manually tell the `IconTheme` to search in it:
-  
+
 ```python
     theme = Gtk.IconTheme.get_for_display(Gdk.Display.get_default())
     theme.add_resource_path("/some/random/path")
 ```
 
     Then this would also work:
-    
+
     - `/some/random/path/scalable/emotes/foo-symbolic.svg`
 
   - If the icon has only one color, the recoloring is as expected, it is replaced by the
