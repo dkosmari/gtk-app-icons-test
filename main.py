@@ -134,7 +134,7 @@ if __name__ ==  "__main__":
     Gio.resources_register(resource)
 
 
-    # Note GTK+ will search for resource icons under APP_ID/icons/ automatically.
+    # Gtk.Application will search for resource icons under APP_ID/icons/ automatically.
 
 
     # Resource paths that are not APP_ID/icons must be included explicitly.
