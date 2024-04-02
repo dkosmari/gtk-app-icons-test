@@ -48,10 +48,10 @@ How to make recoloring work
 
     When using different paths, you need to manually tell the `IconTheme` to search in it:
 
-```python
+    ```python
     theme = Gtk.IconTheme.get_for_display(Gdk.Display.get_default())
     theme.add_resource_path("/some/random/path")
-```
+    ```
 
     Then this would also work:
 
