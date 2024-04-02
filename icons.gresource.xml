@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<gresources>
+  <gresource prefix="/org/gtk/app_icons_test/icons">
+    <file alias="resource-printer-1-symbolic.svg">icons/real-printer-symbolic.svg</file>
+    <file alias="scalable/actions/resource-printer-2-symbolic.svg">icons/real-printer-symbolic.svg</file>
+
+    <file alias="scalable/actions/resource-target-symbolic.svg">icons/real-target-symbolic.svg</file>
+    <file alias="scalable/actions/resource-target-mono-symbolic.svg">icons/real-target-mono-symbolic.svg</file>
+
+  </gresource>
+  <gresource prefix="/some/random/path">
+    <file alias="scalable/actions/resource-printer-3-symbolic.svg">icons/real-printer-symbolic.svg</file>
+  </gresource>
+</gresources>
