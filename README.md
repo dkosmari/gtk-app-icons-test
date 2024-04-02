@@ -35,10 +35,10 @@ How to make recoloring work
 
   - The `.gresource` file must be loaded and registered:
 
-```python
+    ```python
     resource = Gio.Resource.load(base_path + "/icons.gresource")
     Gio.resources_register(resource)
-```
+    ```
 
   - When using `GtkApplication`, the application ID is used to derive a default search
     path, `APP_ID/icons`. For instance, if the application ID is `org.gtk.app_icons_test`,
