@@ -63,3 +63,19 @@ How to make recoloring work
     SVG elements must have `class="success"`, `class="warning"` or `class="error"` for
     these colors to be used. See the
     [icons/real-target-symbolic.svg](icons/real-target-symbolic.svg) for an example.
+
+
+Running the test application
+----------------------------
+
+ - `make`
+   - This will compile the `icons.gresource` file.
+
+ - `./main.py`
+   - This will use the default theme.
+
+ - `./main.py light`
+   - This will force the use of the light theme.
+
+ - `./main.py dark`
+   - This will force the use of the dark theme.
