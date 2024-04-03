@@ -20,6 +20,12 @@ Usage:
 """
 
 
+def get_gtk_version():
+    return "{}.{}.{}".format(Gtk.get_major_version(),
+                             Gtk.get_minor_version(),
+                             Gtk.get_micro_version())
+
+
 class App(Gtk.Application):
 
     def add_icon(self, icon_name, notes):
@@ -115,8 +121,9 @@ class App(Gtk.Application):
 
         self.add_gficon("icons/real-printer-symbolic.svg",
                         """
-                        ❌ used Gio.FileIcon
-                        """)
+                        ❓ used Gio.FileIcon, depends on GTK 4 version,
+                        works on 4.14, fails on 4.10, using {} right now
+                        """.format(get_gtk_version()))
 
         win = Gtk.ApplicationWindow(application = app,
                                     child = self.grid)
