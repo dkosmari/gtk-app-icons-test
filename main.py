@@ -23,30 +23,33 @@ Usage:
 class App(Gtk.Application):
 
     def add_icon(self, icon_name, notes):
-        row = self.next_row
-
         self.grid.attach(Gtk.Label(label = icon_name),
-                         0, row, 1, 1)
+                         0, self.current_row, 1, 1)
         self.grid.attach(Gtk.Image(icon_name = icon_name,
                                    icon_size = Gtk.IconSize.LARGE),
-                         1, row, 1, 1)
+                         1, self.current_row, 1, 1)
         self.grid.attach(Gtk.Label(label = inspect.cleandoc(notes),
                                    halign = Gtk.Align.START,
                                    ellipsize = Pango.EllipsizeMode.END),
-                         2, row, 1, 1)
+                         2, self.current_row, 1, 1)
 
-        self.next_row += 1
+        self.current_row += 1
 
 
-    def add_gficon(self, filename):
+    def add_gficon(self, filename, notes):
         self.grid.attach(Gtk.Label(label = filename),
-                         0, self.next_row, 1, 1)
+                         0, self.current_row, 1, 1)
         f = Gio.File.new_for_path(filename)
         icon = Gio.FileIcon.new(f)
         self.grid.attach(Gtk.Image(gicon = icon,
                                    icon_size = Gtk.IconSize.LARGE),
-                         1, self.next_row, 1, 1)
-        self.next_row += 1
+                         1, self.current_row, 1, 1)
+        self.grid.attach(Gtk.Label(label = inspect.cleandoc(notes),
+                                   halign = Gtk.Align.START,
+                                   ellipsize = Pango.EllipsizeMode.END),
+                         2, self.current_row, 1, 1)
+
+        self.current_row += 1
 
 
     def do_activate(self):
@@ -60,7 +63,7 @@ class App(Gtk.Application):
                              margin_start = 12,
                              margin_end = 12)
 
-        self.next_row = 0
+        self.current_row = 0
 
         self.add_icon("printer-symbolic",
                       """
@@ -110,10 +113,10 @@ class App(Gtk.Application):
                       ✅ one color
                       """)
 
-        self.add_gficon("icons/real-printer-symbolic.svg")
-        self.add_gficon("icons/real-target-symbolic.svg")
-        self.add_gficon("icons/real-target-mono-symbolic.svg")
-
+        self.add_gficon("icons/real-printer-symbolic.svg",
+                        """
+                        ❌ used Gio.FileIcon
+                        """)
 
         win = Gtk.ApplicationWindow(application = app,
                                     child = self.grid)
